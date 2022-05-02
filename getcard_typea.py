@@ -37,7 +37,21 @@ def GetCard_TypeA(proxilab):
     ProxiLAB.Settings.Mode = ProxiLABUtilities.Constants.MODE_READER_AB
     
     #Set the field Off
-    ProxiLAB.Reader.PowerOff()    
+    ProxiLAB.Reader.PowerOff()
+    
+    OUTPUT_FILE_PATH = os.getcwd()
+    #Configure the trace
+    ProxiLAB.Spy.OutputFile = OUTPUT_FILE_PATH + "\\temp.trc"
+    
+    #Configure the analyzer
+    ProxiLAB.Spy.Analyzer.ISO14443Enable = 1
+    ProxiLAB.Spy.Analyzer.ISO15693Enable = 0
+    ProxiLAB.Spy.Analyzer.ISO18092Enable = 0
+    ProxiLAB.Spy.Analyzer.JISX6319Enable = 0
+    ProxiLAB.Spy.Analyzer.DisplaySMA1 = 1
+    ProxiLAB.Spy.Analyzer.InputFile = ProxiLAB.Spy.OutputFile
+    ProxiLAB.Spy.Analyzer.OutputFile = OUTPUT_FILE_PATH + "\\temp.xgpa"
+    
     
     #Start the trace
     error = ProxiLABUtilities.StartSpy(proxilab)
