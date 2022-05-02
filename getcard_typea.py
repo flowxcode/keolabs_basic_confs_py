@@ -60,7 +60,9 @@ def GetCard_TypeA(proxilab):
     PiccBitRate            = 106
     
     err = ProxiLAB.Reader.ISO14443.TypeA.GetCard(AFI, PcdBitRate, PiccBitRate, ISO14443_compliant, CID_x, ATQB)
-    print(CID_x)
+    print(CID_x) # this is UID actually, parameters mixed in eg
+    #win32com.client.VARIANT(24592, (4, 56, 99, 1, 18, 8, 7)) decimal equals in hex:
+    #quest log: 04 38 63 01 12 08
     print(ISO14443_compliant)
     
     #--------------------Send Request GetCard TypeA--------------------#    
@@ -76,6 +78,7 @@ def GetCard_TypeA(proxilab):
     
     #Send Request and get answer
     print("custom_cmd")
+    ProxiLAB.Emulator.ISO14443.TypeA.Enable = 1
     error = ProxiLAB.Reader.ISO14443.TypeA.GetCard(PcdBitrate, PiccBitrate, ISO14443_4, CID, UID, ATS)
     print("custom_cmd")
     
@@ -97,6 +100,7 @@ def GetCard_TypeA(proxilab):
     #print(UID[0])
     print("4 ", ATS)
     print("5 ", msg)
+    
     
     #Power off
     ProxiLAB.Reader.PowerOff()
