@@ -68,16 +68,17 @@ def GetCard_TypeA(proxilab):
     err                     = 1
     AFI                     = 0x00
     ISO14443_compliant      = ProxiLABUtilities.CreateVARIANT()
-    CID_x                     = ProxiLABUtilities.CreateVARIANT()
+    UID_x                   = ProxiLABUtilities.CreateVARIANT()
+    CID_x                   = ProxiLABUtilities.CreateVARIANT()
     ATQB                    = ProxiLABUtilities.CreateVARIANT()
     PcdBitRate              = 106
-    PiccBitRate            = 106
+    PiccBitRate             = 106
     
-    err = ProxiLAB.Reader.ISO14443.TypeA.GetCard(AFI, PcdBitRate, PiccBitRate, ISO14443_compliant, CID_x, ATQB)
-    print(CID_x) # this is UID actually, parameters mixed in eg
+    err = ProxiLAB.Reader.ISO14443.TypeA.GetCard(PcdBitRate, PiccBitRate, ISO14443_compliant, CID_x, UID_x, ATQB)
+    print("CID: ", CID_x)
+    print("UID: ", UID_x)
     #win32com.client.VARIANT(24592, (4, 56, 99, 1, 18, 8, 7)) decimal equals in hex:
     #quest log: 04 38 63 01 12 08
-    print(ISO14443_compliant)
     
     #--------------------Send Request GetCard TypeA--------------------#    
     
