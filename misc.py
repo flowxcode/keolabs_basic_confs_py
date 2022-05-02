@@ -116,7 +116,8 @@ def main(proxilab):
     
     
     #Card Selection
-    err = ProxiLAB.Reader.ISO14443.TypeB.GetCard(AFI, PcdBitRate, PiccBitRate, ISO14443_compliant, CID, ATQB)
+    err = ProxiLAB.Reader.ISO14443.TypeA.GetCard(AFI, PcdBitRate, PiccBitRate, ISO14443_compliant, CID, ATQB)
+    print(CID)
     
     # 4 IBlocks
     err = ProxiLAB.Reader.ISO14443.TypeB.SendTransparentCommand(PcdBitRate,PiccBitRate,add_crc,1000000,tested_command1,picc_response)

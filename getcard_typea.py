@@ -49,14 +49,30 @@ def GetCard_TypeA(proxilab):
     ProxiLAB.Reader.Power_1024(600)
     ProxiLAB.Delay(200)
     
+    
+    
+    err                     = 1
+    AFI                     = 0x00
+    ISO14443_compliant      = ProxiLABUtilities.CreateVARIANT()
+    CID_x                     = ProxiLABUtilities.CreateVARIANT()
+    ATQB                    = ProxiLABUtilities.CreateVARIANT()
+    PcdBitRate              = 106
+    PiccBitRate            = 106
+    
+    err = ProxiLAB.Reader.ISO14443.TypeA.GetCard(AFI, PcdBitRate, PiccBitRate, ISO14443_compliant, CID_x, ATQB)
+    print(CID_x)
+    print(ISO14443_compliant)
+    
     #--------------------Send Request GetCard TypeA--------------------#    
     
     #Get Card
     ISO14443_4 = []
     CID = []
     UID = []
+    #test x
+    #UID                     = ProxiLABUtilities.CreateVARIANT()
     ATS = []
-    msg = str()    
+    msg = str()
     
     #Send Request and get answer
     print("custom_cmd")
@@ -78,7 +94,7 @@ def GetCard_TypeA(proxilab):
     print("2 ", CID)
     print("3 ", UID)
     print(id(UID))
-    print(UID[0])
+    #print(UID[0])
     print("4 ", ATS)
     print("5 ", msg)
     
